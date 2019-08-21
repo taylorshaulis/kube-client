@@ -6,9 +6,9 @@ RUN pip install --upgrade pip
 
 RUN pip install awscli --upgrade --user
 
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.11.10/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
+RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.12.10/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 
-RUN curl -LO https://github.com/kubernetes/kops/releases/download/1.11.1/kops-linux-amd64 && chmod +x ./kops-linux-amd64 && mv ./kops-linux-amd64 /usr/local/bin/kops
+RUN curl -LO https://github.com/kubernetes/kops/releases/download/1.12.3/kops-linux-amd64 && chmod +x ./kops-linux-amd64 && mv ./kops-linux-amd64 /usr/local/bin/kops
 
 RUN echo 'export PATH="$PATH:/root/.local/bin"' >> /root/.bashrc
 
