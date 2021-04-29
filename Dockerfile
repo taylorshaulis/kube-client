@@ -1,11 +1,11 @@
 FROM phusion/baseimage:master-amd64
 
-RUN apt-get update && apt-get install -y python-pip python-dev build-essential
+RUN apt-get update && apt-get install -y python3-pip python3-dev build-essential
 
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 
 #install aws cli
-RUN pip install awscli --upgrade --user
+RUN pip3 install awscli --upgrade --user
 
 #install azurecli
 RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
@@ -14,7 +14,7 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 RUN curl -LO "https://dl.k8s.io/release/v1.21.0/bin/linux/amd64/kubectl" && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 
 #install kops
-RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 && chmod +x ./kops-linux-amd64 && mv ./kops-linux-amd64 /usr/local/bin/kops
+RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 && chmod +x ./kops && mv ./kops /usr/local/bin/kops
 
 RUN echo 'export PATH="$PATH:/root/.local/bin"' >> /root/.bashrc
 
