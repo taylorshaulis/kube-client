@@ -14,8 +14,7 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 RUN curl -LO "https://dl.k8s.io/release/v1.21.0/bin/linux/amd64/kubectl" && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 
 #install kops
-RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 
-&& chmod +x ./kops-linux-amd64 && mv ./kops-linux-amd64 /usr/local/bin/kops
+RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 && chmod +x ./kops-linux-amd64 && mv ./kops-linux-amd64 /usr/local/bin/kops
 
 RUN echo 'export PATH="$PATH:/root/.local/bin"' >> /root/.bashrc
 
