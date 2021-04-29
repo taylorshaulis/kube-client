@@ -1,4 +1,4 @@
-FROM phusion/baseimage
+FROM phusion/baseimage:master-amd64
 
 RUN apt-get update && apt-get install -y python-pip python-dev build-essential
 
