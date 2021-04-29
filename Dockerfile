@@ -4,11 +4,18 @@ RUN apt-get update && apt-get install -y python-pip python-dev build-essential
 
 RUN pip install --upgrade pip
 
+#install aws cli
 RUN pip install awscli --upgrade --user
 
-RUN curl -LO https://storage.googleapis.com/kubernetes-release/release/v1.12.10/bin/linux/amd64/kubectl && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
+#install azurecli
+RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 
-RUN curl -LO https://github.com/kubernetes/kops/releases/download/1.12.3/kops-linux-amd64 && chmod +x ./kops-linux-amd64 && mv ./kops-linux-amd64 /usr/local/bin/kops
+#install kubectl
+RUN curl -LO "https://dl.k8s.io/release/v1.21.0/bin/linux/amd64/kubectl" && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
+
+#install kops
+RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 
+&& chmod +x ./kops-linux-amd64 && mv ./kops-linux-amd64 /usr/local/bin/kops
 
 RUN echo 'export PATH="$PATH:/root/.local/bin"' >> /root/.bashrc
 
