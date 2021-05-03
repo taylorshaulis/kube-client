@@ -13,6 +13,10 @@ RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 #install kubectl
 RUN curl -LO "https://dl.k8s.io/release/v1.21.0/bin/linux/amd64/kubectl" && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
 
+#install helm
+#https://helm.sh/docs/intro/install/
+RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
 #install kops
 RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 && chmod +x ./kops && mv ./kops /usr/local/bin/kops
 
