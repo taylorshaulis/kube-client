@@ -5,7 +5,7 @@ RUN apt-get update && apt-get install -y python3-pip python3-dev build-essential
 RUN pip3 install --upgrade pip
 
 #install aws cli
-RUN pip3 install awscli==2.0.40 --upgrade --user
+RUN pip3 install awscliv2==2.0.40 --upgrade --user
 
 #install azurecli
 # RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
