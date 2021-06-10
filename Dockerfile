@@ -24,7 +24,7 @@ RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 &
 #RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 && chmod +x ./kops && mv ./kops /usr/local/bin/kops
 
 #install terraform
-wget https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip && \
+RUN wget https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip && \
     unzip terraform_0.13.4_linux_amd64.zip && \
     mv terraform /usr/local/bin/terraform
 
