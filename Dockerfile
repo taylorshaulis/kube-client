@@ -1,5 +1,7 @@
 FROM phusion/baseimage:master-amd64
 
+RUN apt-get update && apt-get install -y kubectx unzip
+
 #install aws cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.40.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
