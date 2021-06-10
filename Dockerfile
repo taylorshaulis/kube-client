@@ -1,14 +1,9 @@
 FROM phusion/baseimage:master-amd64
 
-RUN apt-get update && apt-get install -y python3-pip python3-dev build-essential
-
-RUN pip3 install --upgrade pip
-
 #install aws cli
-RUN pip3 install awscliv2==2.0.40 --upgrade --user
-
-#install azurecli
-# RUN curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.40.zip" -o "awscliv2.zip" && \
+    unzip awscliv2.zip && \
+    ./aws/install
 
 #install kubectl
 RUN curl -LO "https://dl.k8s.io/release/v1.16.15/bin/linux/amd64/kubectl" && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
