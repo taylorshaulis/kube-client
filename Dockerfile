@@ -16,7 +16,7 @@ RUN curl -LO "https://dl.k8s.io/release/v1.16.15/bin/linux/amd64/kubectl" && chm
 #RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
 RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 -o get-helm-3 && \
     chmod +x get-helm-3 && \
-    ./get-helm-3 -v 3.2.0 --no-sudo
+    ./get-helm-3 --version 3.2.0 --no-sudo
 
 #install kubectx
 RUN curl https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_arm64.tar.gz -o kubectx.tar.gz && \
