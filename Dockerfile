@@ -1,6 +1,6 @@
 FROM phusion/baseimage:master-amd64
 
-RUN apt-get update && apt-get install -y kubectx unzip
+RUN apt-get update && apt-get install -y unzip
 
 #install aws cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.40.zip" -o "awscliv2.zip" && \
@@ -17,11 +17,20 @@ RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 &
     chmod +x get-helm-3 && \
     ./get-helm-3 -v 3.2.0
 
-#install kops
-#RUN curl -Lo kops https://github.com/kubernetes/kops/releases/download/v1.20.0/kops-linux-amd64 && chmod +x ./kops && mv ./kops /usr/local/bin/kops
+#install kubectx
+RUN curl -LO https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_arm64.tar.gz && \
+    tar -xvf kubectx_v0.9.3_linux_arm64.tar.gz && \
+    mv kubectx /usr/local/bin/kubectx && \
+    rm kubectx_v0.9.3_linux_arm64.tar.gz LICENSE
+
+#install kubens
+RUN curl -LO https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens_v0.9.3_linux_arm64.tar.gz && \
+    tar -xvf kubens_v0.9.3_linux_arm64.tar.gz && \
+    mv kubens /usr/local/bin/kubens && \
+    rm kubens_v0.9.3_linux_arm64.tar.gz LICENSE
 
 #install terraform
-RUN wget https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip && \
+RUN curl -LO https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip && \
     unzip terraform_0.13.4_linux_amd64.zip && \
     mv terraform /usr/local/bin/terraform
 
