@@ -1,5 +1,6 @@
 FROM phusion/baseimage:master-amd64
 
+#apt stuff
 RUN apt-get update && apt-get install -y unzip
 
 #install aws cli
