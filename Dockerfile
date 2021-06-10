@@ -14,26 +14,27 @@ RUN curl -LO "https://dl.k8s.io/release/v1.16.15/bin/linux/amd64/kubectl" && chm
 #install helm
 #https://helm.sh/docs/intro/install/
 #RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
-RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 && \
+RUN curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 -o get-helm-3 && \
     chmod +x get-helm-3 && \
     ./get-helm-3 -v 3.2.0
 
 #install kubectx
-RUN curl -LO https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_arm64.tar.gz && \
-    tar -xvf kubectx_v0.9.3_linux_arm64.tar.gz && \
+RUN curl https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubectx_v0.9.3_linux_arm64.tar.gz -o kubectx.tar.gz && \
+    tar -xvf kubectx.tar.gz && \
     mv kubectx /usr/local/bin/kubectx && \
-    rm kubectx_v0.9.3_linux_arm64.tar.gz LICENSE
+    rm kubectx.tar.gz LICENSE
 
 #install kubens
-RUN curl -LO https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens_v0.9.3_linux_arm64.tar.gz && \
-    tar -xvf kubens_v0.9.3_linux_arm64.tar.gz && \
+RUN curl https://github.com/ahmetb/kubectx/releases/download/v0.9.3/kubens_v0.9.3_linux_arm64.tar.gz  -o kubens.tar.gz && \
+    tar -xvf kubens.tar.gz && \
     mv kubens /usr/local/bin/kubens && \
-    rm kubens_v0.9.3_linux_arm64.tar.gz LICENSE
+    rm kubens.tar.gz LICENSE
 
 #install terraform
-RUN curl -LO https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip && \
-    unzip terraform_0.13.4_linux_amd64.zip && \
-    mv terraform /usr/local/bin/terraform
+RUN curl https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_linux_amd64.zip -o terraform.zip && \
+    unzip terraform.zip && \
+    mv terraform /usr/local/bin/terraform && \
+    rm terraform.zip
 
 RUN echo 'export PATH="$PATH:/root/.local/bin"' >> /root/.bashrc
 
