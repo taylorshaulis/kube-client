@@ -1,12 +1,17 @@
 FROM phusion/baseimage:master-amd64
 
 #apt stuff
-RUN apt-get update && apt-get install -y unzip git
+RUN apt-get update && apt-get install -y unzip git jq
 
 #install aws cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.40.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
     ./aws/install
+
+#install aws iam authenticator
+RUN curl -o aws-iam-authenticator https://amazon-eks.s3.us-west-2.amazonaws.com/1.19.6/2021-01-05/bin/linux/amd64/aws-iam-authenticator && \
+    chmod +x aws-iam-authenticator && \
+    mv aws-iam-authenticator /usr/local/bin/aws-iam-authenticator
 
 #install kubectl
 RUN curl -LO "https://dl.k8s.io/release/v1.16.15/bin/linux/amd64/kubectl" && chmod +x ./kubectl && mv ./kubectl /usr/local/bin/kubectl
