@@ -1,7 +1,7 @@
 FROM phusion/baseimage:master-amd64
 
 #apt stuff
-RUN apt-get update && apt-get install -y unzip git jq
+RUN apt-get update && apt-get install -y unzip git jq zsh
 
 #install aws cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.40.zip" -o "awscliv2.zip" && \
