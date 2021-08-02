@@ -3,6 +3,8 @@ FROM phusion/baseimage:master-amd64
 #apt stuff
 RUN apt-get update && apt-get install -y unzip git jq zsh
 
+RUN sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 #install aws cli
 RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64-2.0.40.zip" -o "awscliv2.zip" && \
     unzip awscliv2.zip && \
