@@ -43,6 +43,10 @@ RUN curl -L https://releases.hashicorp.com/terraform/0.13.4/terraform_0.13.4_lin
     mv terraform /usr/local/bin/terraform && \
     rm terraform.zip
 
+#install NPM
+RUN curl -fsSL https://deb.nodesource.com/setup_16.x | bash -
+RUN apt-get install -y nodejs
+
 RUN echo 'export PATH="$PATH:/root/.local/bin"' >> /root/.bashrc
 
 # Use baseimage-docker's init system.
